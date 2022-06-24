@@ -183,7 +183,7 @@ public class ServerEventHandler {
 	public void entityAdded(EntityJoinWorldEvent event) {
 		if(event.world.isRemote) return;
 
-		Chunk chunk = event.world.getChunkFromChunkCoords(event.entity.chunkCoordX, event.entity.chunkCoordZ);
+		Chunk chunk = event.world.getChunkFromChunkCoords(MathHelper.floor_double(event.entity.posX / 16.0), MathHelper.floor_double(event.entity.posZ / 16.0));
 		
 		if (ConfigBlocksItems.enableNewBoats && ConfigBlocksItems.replaceOldBoats) {
 			if (event.entity.getClass() == EntityBoat.class) {
